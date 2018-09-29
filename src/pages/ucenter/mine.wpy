@@ -1,0 +1,56 @@
+<style lang="less">
+.my-info {
+  width: 100%;
+  text-align: center;
+  border-bottom: 20rpx solid #f5f5f5;
+  padding-bottom: 30rpx;
+}
+.my-info .avatar {
+  width: 176rpx;
+  height: 176rpx;
+  border-radius: 50%;
+}
+.my-info .my-info-name {
+  color: #293539;
+  font-size: 76rrpx;
+  margin-top: 10rpx;
+  position: relative;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="my-info">
+      <view class="profile-info" bindtap="goLogin">
+        <image class="avatar" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/avatar.png'}}" />
+        <view class="my-info-name">{{userInfo.nickName}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+var app = getApp();
+if (!app.globalData) app.globalData = {};
+import wepy from 'wepy';
+export default class Index extends wepy.page {
+  data = {
+    userInfo: {
+      nickName: '点击登录',
+      avatarUrl: ''
+    }
+  };
+  onLoad() {}
+
+  onShow() {
+    if (app.globalData.hasLogin) {
+      this.userInfo = wx.getStorageSync('userInfo');
+    }
+  }
+
+  goLogin() {
+    if (!app.globalData.hasLogin) {
+      wx.navigateTo({ url: '/pages/auth/login' });
+    }
+  }
+}
+</script>
+

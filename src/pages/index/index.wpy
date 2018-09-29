@@ -1,0 +1,33 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    Index
+    <!-- <i class="iconfont icon-fenxiang"></i> -->
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    // navigationBarTitleText: 'test'
+  };
+  components = {};
+
+  mixins = [];
+
+  data = {};
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad() {
+    console.log('--------index/index/onload');
+  }
+}
+</script>

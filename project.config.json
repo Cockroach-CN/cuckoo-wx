@@ -1,0 +1,15 @@
+{
+  "description": "cuckoo init",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
+    "newFeature": true
+  },
+  "compileType": "miniprogram",
+  "appid": "wx48dbb47a211c35e1",
+  "projectname": "cuckoo-wx",
+  "miniprogramRoot": "./dist",
+  "condition": {}
+}

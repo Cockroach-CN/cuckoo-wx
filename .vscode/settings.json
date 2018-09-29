@@ -1,0 +1,27 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    "dist": true,
+    "test": true,
+    // ".gitignore": true,
+    ".npmignore": true,
+    ".editorconfig": true,
+    ".prettierrc": true,
+    ".wepycache": true,
+    ".wepyignore": true,
+    "package-lock.json": true,
+    "yarn.lock": true,
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "eslint.enable": false,
+  "files.associations": {
+    "*.wpy": "vue"
+  },
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html"
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html"
+
+}

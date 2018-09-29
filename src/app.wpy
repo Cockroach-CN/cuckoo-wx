@@ -1,0 +1,80 @@
+<style lang="less">
+@import url('./fonts/iconfont.wxss');
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+
+export default class extends wepy.app {
+  config = {
+    pages: ['pages/index/index', 'pages/ucenter/mine', 'pages/auth/login'],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: '布谷鸟',
+      navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#8a8a8a',
+      borderStyle: 'white',
+      selectedColor: '#333333',
+      list: [
+        {
+          text: '分享',
+          pagePath: 'pages/index/index',
+          iconPath: 'images/tabbar/fenxiang.png',
+          selectedIconPath: 'images/tabbar/fenxiang_selected.png'
+        },
+        {
+          text: '消息',
+          pagePath: 'pages/index/index',
+          iconPath: 'images/tabbar/xiaoxi.png',
+          selectedIconPath: 'images/tabbar/xiaoxi_selected.png'
+        },
+        {
+          text: '活动',
+          pagePath: 'pages/index/index',
+          iconPath: 'images/tabbar/huodong.png',
+          selectedIconPath: 'images/tabbar/huodong_selected.png'
+        },
+        {
+          text: '我的',
+          pagePath: 'pages/ucenter/mine',
+          iconPath: 'images/tabbar/wode.png',
+          selectedIconPath: 'images/tabbar/wode_selected.png'
+        }
+      ]
+    }
+  };
+
+  globalData = {
+    hasLogin: false
+  };
+
+  constructor() {
+    super();
+    this.use('requestfix');
+  }
+
+  onLaunch() {
+    console.log('------app/onlaunch');
+  }
+
+  onShow() {
+    if (wx.getStorageSync('userInfo')) {
+      this.globalData.hasLogin = true;
+    } else {
+      this.globalData.hasLogin = false;
+    }
+  }
+}
+</script>

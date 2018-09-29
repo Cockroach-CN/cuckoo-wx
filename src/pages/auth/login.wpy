@@ -1,0 +1,53 @@
+<style lang="less">
+.form-box {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-top: 96rpx;
+  background: #fff;
+}
+.wx-login-btn {
+  margin: 60rpx auto 40rpx auto;
+  height: 96rpx;
+  width: 90%;
+  line-height: 96rpx;
+  color: #a78845;
+  font-size: 30rpx;
+  background: #b4282d;
+  border-radius: 6rpx;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="form-box">
+      <button type="primary" open-type="getUserInfo" class="wx-login-btn" bindgetuserinfo="wxLogin">微信直接登录</button>
+    </view>
+  </view>
+</template>
+<script>
+var app = getApp();
+import wepy from 'wepy';
+export default class Index extends wepy.page {
+  data = {};
+
+  onLoad() {
+    console.log('--------auth/login/onload');
+    console.log(app);
+  }
+
+  wxLogin() {
+    wx.login({
+      success: function(res) {
+        wx.getUserInfo({
+          success: function(res2) {
+            app.globalData.hasLogin = true;
+            wx.setStorageSync('userInfo', res2.userInfo);
+            wx.navigateBack({ delta: 1 });
+          }
+        });
+      }
+    });
+  }
+}
+</script>
+
